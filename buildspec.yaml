@@ -2,14 +2,15 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto8
+      java: corretto17
   pre_build:
     commands:
     - echo Logging in to Amazon ECR...
     - aws --version
-    - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-    - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
-    - IMAGE_URI=${REPOSITORY_URI}:${TAG}
+    - aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 274201610284.dkr.ecr.eu-north-1.amazonaws.com
+    - IMAGE_NAME=pension-details-repo-913044
+    - IMAGE_URI=274201610284.dkr.ecr.eu-north-1.amazonaws.com/pension-details-repo-913044:latest
+    - CONTAINER_NAME=pension-details-container
   build:
     commands:
     - echo Build started on `date`

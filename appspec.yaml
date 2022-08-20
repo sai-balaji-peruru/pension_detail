@@ -3,8 +3,8 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:us-east-1:183686979203:task-definition/aws-hello-world-rest-api:1"
+        TaskDefinition: "arn:aws:ecs:eu-north-1:274201610284:task-definition/pension-details-task:1"
         LoadBalancerInfo:
-          ContainerName: "pensioner-detail-microService"
+          ContainerName: "pension-details-container"
           ContainerPort: "9097"
         PlatformVersion: "LATEST"
